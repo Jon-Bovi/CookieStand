@@ -5,6 +5,7 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 var location1stAndPike = {
 
+    location: '1st and Pike',
     minCustomersPerHr: 23,
     maxCustomersPerHr: 65,
     avgCookiesPerSale: 6.3,
@@ -39,7 +40,14 @@ var location1stAndPike = {
     },
 
     render: function() {
-      
+      var ulEl = document.getElementById('cookie_list');
+      var hour;
+      for (var i = 0; i < hours.length; i++) {
+        var liEl = document.createElement('li');
+        hour = hours[i];
+        liEl.textContent = hour + ': ' + hourInfoList[hour].hourlyCookies + ' cookies';
+        ulEl.appendChild(liEl);
+      }
     }
 };
 
