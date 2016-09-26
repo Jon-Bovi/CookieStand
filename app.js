@@ -45,15 +45,16 @@ var location1stAndPike = {
       for (var i = 0; i < hours.length; i++) {
         var liEl = document.createElement('li');
         hour = hours[i];
-        liEl.textContent = hour + ': ' + hourInfoList[hour].hourlyCookies + ' cookies';
+        liEl.textContent = hour + ': ' + this.hourInfoList[hour].hourlyCookies + ' cookies';
         ulEl.appendChild(liEl);
       }
     }
 };
 
 location1stAndPike.generateInfoList();
+location1stAndPike.render();
 
-var locationSeaTac =
-    var locationSeattleCenter =
-        var locationCapHill =
-            var locationAlki =
+// var locationSeaTac =
+//     var locationSeattleCenter =
+//         var locationCapHill =
+//             var locationAlki =
