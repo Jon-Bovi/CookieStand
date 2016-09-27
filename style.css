@@ -5,10 +5,12 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-image: url("Chocolate_chip_cookie.jpg");
+  background-image: url("CookieMonsterWaving.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
-div {
+section {
   width: auto;
   z-index: 2;
 }
