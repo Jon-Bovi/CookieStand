@@ -4,6 +4,10 @@ body {
   background-image: url("Chocolate_chip_cookie.jpg");
 }
 
+div {
+  width: auto;
+}
+
 h1 {
   font-size: 400%;
   text-align: center;
@@ -12,8 +16,26 @@ h1 {
   border-top: 3px solid chartreuse;
   border-bottom: 5px solid chartreuse;
   text-shadow: 3px 3px white;
+  margin-bottom: 0px;
+  position: ;
 }
 
-section {
+h2 {
+
+}
+
+table {
+  margin: 20px auto;
+}
+
+td {
+  text-align: center;
+  padding: 0px 40px 0px 40px;
+  border:2px solid black;
+  border-radius: 10px;
+  background-color: palegreen;
+}
+
+p {
 
 }
