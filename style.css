@@ -1,0 +1,92 @@
+* {
+    font-family: Indie Flower, serif;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-image: url("Chocolate_chip_cookie.jpg");
+}
+
+div {
+  width: auto;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 400%;
+  text-align: center;
+  margin-top: 300px;
+  font-family: Indie Flower, serif;
+  border-bottom: 5px solid seagreen;
+  border-top: 10px solid seagreen;
+  border-radius: 50% 50% 20% 20%;
+  text-shadow: 3px 3px white;
+  margin-bottom: 0px;
+}
+
+
+table {
+  margin: 20px auto;
+  border-spacing: 0px;
+  width:auto;
+}
+
+#top {
+  position: relative;
+  width:384px;
+  margin: 0px;
+  top:-100px;
+  left:8px;
+}
+
+#what {
+  width:400px;
+  margin: 0px auto;
+}
+
+td {
+  text-align: center;
+  border:2px solid black;
+  border-radius: 10px;
+  background-color: palegreen;
+  width: 186px;
+}
+
+p {
+  margin: 0px;
+  margin-bottom: 0px;
+  width: 180px;
+  text-shadow: 1px 1px white;
+}
+
+.under {
+  margin:0px auto;
+  display: inline-block;
+  height:73.81px;
+  z-index: 110;
+  background-color: tomato;
+}
+
+.over {
+  z-index: 10;
+  width:180px;
+  height:74.8px;
+}
+
+td.over:active {
+  background-color: transparent;
+}
+
+h2 {
+  font-size: 30px;
+  margin:0px;
+}
+
+h2:active {
+  display:none;
+}
+
+#fools {
+  background-image: url("gandalf.gif");
+}
