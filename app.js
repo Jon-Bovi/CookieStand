@@ -46,6 +46,7 @@ var location1stAndPike = {
       h3El.textContent = this.location;
 
       this.generateInfoList();
+      console.log(this.hourInfoList);
       var hour;
       for (var i = 0; i < hours.length; i++) {
         var liEl = document.createElement('li');
@@ -102,6 +103,7 @@ var locationSeaTac = {
       h3El.textContent = this.location;
 
       this.generateInfoList();
+      console.log(this.hourInfoList);
       var hour;
       for (var i = 0; i < hours.length; i++) {
         var liEl = document.createElement('li');
@@ -158,6 +160,7 @@ var locationSeattleCenter = {
       h3El.textContent = this.location;
 
       this.generateInfoList();
+      console.log(this.hourInfoList);
       var hour;
       for (var i = 0; i < hours.length; i++) {
         var liEl = document.createElement('li');
@@ -214,6 +217,7 @@ var locationCapHill = {
       h3El.textContent = this.location;
 
       this.generateInfoList();
+      console.log(this.hourInfoList);
       var hour;
       for (var i = 0; i < hours.length; i++) {
         var liEl = document.createElement('li');
@@ -270,6 +274,7 @@ var locationAlki = {
       h3El.textContent = this.location;
 
       this.generateInfoList();
+      console.log(this.hourInfoList);
       var hour;
       for (var i = 0; i < hours.length; i++) {
         var liEl = document.createElement('li');
