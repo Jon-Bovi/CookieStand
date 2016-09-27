@@ -45,6 +45,10 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       tdEl.textContent = this.hourInfoList[hour].hourlyCookies;
       trEl.appendChild(tdEl);
     }
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.totalDailyCookies;
+    trEl.appendChild(tdEl);
+
     tableEl.appendChild(trEl);
   };
 
@@ -60,9 +64,21 @@ var stores = [
 
 function renderTable() {
   var tableEl = document.getElementById('cookiestores');
+
+  renderHeader(tableEl);
+  //tell instances to render their own info
+  for (var i = 0; i < stores.length; i++) {
+    stores[i].render(tableEl);
+  }
+  //render totals row
+  renderFooter(tableEl);
+
+}
+
+function renderHeader(tableEl) {
   var trEl = document.createElement('tr');
   //append the blank corner first
-  var blankEl = document.createElement('td');
+  var blankEl = document.createElement('th');
   blankEl.textContent = '';
   trEl.appendChild(blankEl);
   //append the hours as th's
@@ -71,13 +87,15 @@ function renderTable() {
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
   }
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  trEl.appendChild(thEl);
+
   tableEl.appendChild(trEl);
-  //tell instances to render their own info
-  for (var i = 0; i < stores.length; i++) {
-    stores[i].render(tableEl);
-  }
-  //render totals row
-  trEl = document.createElement('tr');
+}
+
+function renderFooter(tableEl) {
+  var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   tdEl.textContent = 'Totals';
   trEl.appendChild(tdEl);
@@ -90,6 +108,7 @@ function renderTable() {
 
   tdEl = document.createElement('td');
   tdEl.textContent = calculateUltimateTotal();
+  trEl.appendChild(tdEl);
   tableEl.appendChild(trEl);
 }
 
@@ -106,6 +125,7 @@ function calculateUltimateTotal() {
   for (var i = 0; i < stores.length; i++) {
     total += stores[i].totalDailyCookies;
   }
+  return total;
 }
 
 renderTable();
