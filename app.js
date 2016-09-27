@@ -30,28 +30,21 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
   };
 
   this.render = function() {
-    var h3El = document.getElementById('Pike_header');
-    var ulEl = document.getElementById('Pike_list');
-    h3El.textContent = this.location;
-
     this.generateInfoList();
     console.log(this.hourInfoList);
-
+    var tableEl = document.getElementById('cookiestores');
+    var trEl = document.createElement('tr');
     var hour;
-    for (var i = 0; i < hours.length; i++) {
-      var liEl = document.createElement('li');
-      hour = hours[i];
-      liEl.textContent = hour + ': ' + this.hourInfoList[hour].hourlyCookies + ' cookies';
-      ulEl.appendChild(liEl);
+    for (var j = 0; j < hours.length; j++) {
+      hour = hours[j];
+      var tdEl = document.createElement('td');
+      tdEl.textContent = this.hourInfoList[hour].hourlyCookies;
+      trEl.appendChild(tdEl);
     }
-    var liEl = document.createElement('li');
-    liEl.textContent = 'Total: ' + this.totalDailyCookies + ' cookies';
-    ulEl.appendChild(liEl);
+    tableEl.appendChild(trEl);
   };
 
-
 }
-
 
 var stores = [
   new CookieShop('1st and Pike', 23, 65, 6.3),
