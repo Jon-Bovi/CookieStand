@@ -1,0 +1,19 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-image: url("Chocolate_chip_cookie.jpg");
+}
+
+h1 {
+  font-size: 400%;
+  text-align: center;
+  margin-top: 300px;
+  font-family: Indie Flower, serif;
+  border-top: 3px solid chartreuse;
+  border-bottom: 5px solid chartreuse;
+  text-shadow: 3px 3px white;
+}
+
+section {
+
+}
