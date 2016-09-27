@@ -5,7 +5,7 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 
 function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale) {
-  this.location = locationName;
+  this.locationName = locationName;
   this.minCustomersPerHr = minCustomersPerHr;
   this.maxCustomersPerHr = maxCustomersPerHr;
   this.avgCookiesPerSale = avgCookiesPerSale;
@@ -29,11 +29,15 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       return hourInfoObject;
   };
 
-  this.render = function() {
+  this.render = function(tableEl) {
     this.generateInfoList();
-    console.log(this.hourInfoList);
-    var tableEl = document.getElementById('cookiestores');
+    // console.log(this.hourInfoList);
     var trEl = document.createElement('tr');
+
+    var locationEl = document.createElement('td');
+    locationEl.textContent = this.locationName;
+    trEl.appendChild(locationEl);
+
     var hour;
     for (var j = 0; j < hours.length; j++) {
       hour = hours[j];
@@ -50,13 +54,31 @@ var stores = [
   new CookieShop('1st and Pike', 23, 65, 6.3),
   new CookieShop('SeaTac Airport', 3, 24, 1.2),
   new CookieShop('Seattle Center', 11, 38, 3.7),
-  new CookieShop('1st and Pike', 20, 38, 2.3),
-  new CookieShop('1st and Pike', 2, 16, 4.6)
+  new CookieShop('Capitol Hill', 20, 38, 2.3),
+  new CookieShop('Alki', 2, 16, 4.6)
 ];
 
-for (var i = 0; i < stores.length; i++) {
-  stores[i].render();
+function renderTable() {
+  var tableEl = document.getElementById('cookiestores');
+  var trEl = document.createElement('tr');
+  //append the blank corner first
+  var blankEl = document.createElement('td');
+  blankEl.textContent = '';
+  trEl.appendChild(blankEl);
+  //append the hours as th's
+  for (var i = 0; i < hours.length; i++) {
+    var thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    trEl.appendChild(thEl);
+  }
+  tableEl.appendChild(trEl);
+  //tell instances to render their own info
+  for (var i = 0; i < stores.length; i++) {
+    stores[i].render(tableEl);
+  }
 }
+
+renderTable();
 
 
 /// this object is more refined than others
