@@ -5,17 +5,18 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 
 function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale) {
-  this.location = locationName,
-  this.minCustomersPerHr = minCustomersPerHr,
-  this.maxCustomersPerHr = maxCustomersPerHr,
-  this.avgCookiesPerSale = avgCookiesPerSale,
-  this.totalDailyCookies = 0,
-  this.hourInfoList = {},
+  this.location = locationName;
+  this.minCustomersPerHr = minCustomersPerHr;
+  this.maxCustomersPerHr = maxCustomersPerHr;
+  this.avgCookiesPerSale = avgCookiesPerSale;
+  this.totalDailyCookies = 0;
+  this.hourInfoList = {};
+
   this.generateInfoList = function() {
       for (var i = 0; i < hours.length; i++) {
           this.hourInfoList[hours[i]] = this.generateHourlyInfoObject();
       }
-  },
+  };
 
   this.generateHourlyInfoObject = function() {
       var numCustos = Math.floor(Math.random() * (this.maxCustomersPerHr - this.minCustomersPerHr + 1)) + this.minCustomersPerHr;
@@ -26,7 +27,7 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
         hourlyCookies: numCookies
       };
       return hourInfoObject;
-  },
+  };
 
   this.render = function() {
     var h3El = document.getElementById('Pike_header');
@@ -46,8 +47,25 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
     var liEl = document.createElement('li');
     liEl.textContent = 'Total: ' + this.totalDailyCookies + ' cookies';
     ulEl.appendChild(liEl);
-  }
+  };
+
+
 }
+
+
+var stores = [
+  new CookieShop('1st and Pike', 23, 65, 6.3),
+  new CookieShop('SeaTac Airport', 3, 24, 1.2),
+  new CookieShop('Seattle Center', 11, 38, 3.7),
+  new CookieShop('1st and Pike', 20, 38, 2.3),
+  new CookieShop('1st and Pike', 2, 16, 4.6)
+];
+
+for (var i = 0; i < stores.length; i++) {
+  stores[i].render();
+}
+
+
 /// this object is more refined than others
 /// consolidated genhourlycusts and calchoulycookies into genhourlyobject
 /// added totaldailycookies property
