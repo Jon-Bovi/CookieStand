@@ -87,9 +87,10 @@ function renderTable() {
     tdEl.textContent = calculateHourlyTotal(hour);
     trEl.appendChild(tdEl);
   }
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = calculateUltimateTotal();
   tableEl.appendChild(trEl);
-  // tdEl = document.createElement('td');
-  // tdEl.textContent =
 }
 
 function calculateHourlyTotal(hour) {
@@ -100,10 +101,12 @@ function calculateHourlyTotal(hour) {
   return total;
 }
 
-// function calculateUltimateTotal() {
-//   var total = 0;
-//   for (var i = 0; i < stores.length;)
-// }
+function calculateUltimateTotal() {
+  var total = 0;
+  for (var i = 0; i < stores.length; i++) {
+    total += stores[i].totalDailyCookies;
+  }
+}
 
 renderTable();
 
