@@ -62,11 +62,11 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
   this.render = function(tableEl, renderingCookie) {
     // console.log(this.hourInfoList);
     var trEl = document.createElement('tr');
-
+    //insert first cell
     var locationEl = document.createElement('td');
     locationEl.textContent = this.locationName;
     trEl.appendChild(locationEl);
-
+    //insert the hourly data
     var hour;
     for (var j = 0; j < hours.length; j++) {
       hour = hours[j];
@@ -79,7 +79,7 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       }
       trEl.appendChild(tdEl);
     }
-
+    //if rendering the cookie table, insert store total for the day
     if (renderingCookie) {
       tdEl = document.createElement('td');
       tdEl.textContent = this.totalDailyCookies;
@@ -100,7 +100,6 @@ var stores = [
 
 function renderTable() {
   var tableEl = document.getElementById('cookiestores');
-
   renderHeader(tableEl, true);
   //tell instances to render their own info
   for (var i = 0; i < stores.length; i++) {
@@ -108,7 +107,6 @@ function renderTable() {
   }
   //render totals row
   renderFooter(tableEl, true);
-
 }
 
 function renderHeader(tableEl, renderingCookie) {
@@ -170,15 +168,11 @@ function calculateUltimateTotal() {
 
 function renderStaffingTable() {
   var staffTable = document.getElementById('staffingtable');
-
   renderHeader(staffTable, false);
-
   for (var i = 0; i < stores.length; i++) {
     stores[i].render(staffTable, false);
   }
 }
 
-
 renderTable();
-
 renderStaffingTable();
