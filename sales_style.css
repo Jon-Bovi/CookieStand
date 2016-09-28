@@ -3,6 +3,10 @@
   font-weight: lighter;
 }
 
+.number {
+  width: 60px;
+}
+
 table {
   border: 2px solid black;
   margin-bottom: 30px;
@@ -31,15 +35,15 @@ th:first-of-type {
   background-color: gray;
 }
 
-tr:last-child, td:last-child {
+#cookietable tr:last-child, #cookietable td:last-child {
   background-color: #ffeadd;
 }
 
-td:last-child {
+#cookietable td:last-child {
   min-width: 90px;
 }
 
-tr:last-child td:last-child {
+#cookietable tr:last-child td:last-child {
   background-image: url("crag-salmon.png");
   background-position: right;
   background-repeat: no-repeat;
