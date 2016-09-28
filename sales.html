@@ -9,21 +9,21 @@
 <body>
   <form id="storeform">
     <fieldset>
-      <legend>Add/Edit a Store</legend>
+      <legend>Update Tables</legend>
 
       <label for="location">Location: </label>
-      <input name="location" type="text" />
+      <input name="location" type="text" required>
 
       <label for="minCusts">Min. Customers Per Hour: </label>
-      <input name="minCusts" type="text" class="number" />
+      <input name="minCusts" type="number" class="number" min="0">
 
       <label for="maxCusts">Max. Customers Per Hour: </label>
-      <input name="maxCusts" type="text" class="number" id="maxinput"/>
+      <input name="maxCusts" type="number" class="number" min="0">
 
       <label for="avg">Average Cookies Per Sale: </label>
-      <input name="avg" type="text" class="number" />
+      <input name="avg" type="number" class="number" min="0" step=".1">
 
-      <button type="submit">Add to tables</button>
+      <button type="submit">Update Tables</button>
     </fieldset>
   </form>
 
