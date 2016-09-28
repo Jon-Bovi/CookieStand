@@ -16,7 +16,6 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       this.numCustomersPerHour.push(Math.floor(Math.random() * (this.maxCustomersPerHr - this.minCustomersPerHr + 1)) + this.minCustomersPerHr);
     }
     this.distributeCustomersPerHour();
-    console.log(this.numCustomersPerHour);
   };
 
   // makes numCustomersPerHour into a pseudo bell-curve
@@ -25,30 +24,31 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
     var firstHalf = this.numCustomersPerHour.slice(0, hours.length / 2);
     var secondHalf = this.numCustomersPerHour.slice(hours.length / 2, hours.length);
     //sorts the first 7 hours in ascending order
-    firstHalf.sort(function(a, b) {return a - b}); // eslint-disable
+    //.sort() can only sort numbers if you give it a function that compares them
+    firstHalf.sort(function(a, b) {return a - b;});
     //sorts the last 7 hours in descending order
-    secondHalf.sort(function(a, b) {return b - a});  //eslint-disable
+    secondHalf.sort(function(a, b) {return b - a;});
     this.numCustomersPerHour = firstHalf.concat(secondHalf);
   };
 
   this.generateInfoList = function() {
     this.generateCustomersPerHour();
     for (var i = 0; i < hours.length; i++) {
-        this.hourInfoList[hours[i]] = this.generateHourlyInfoObject(i);
+      this.hourInfoList[hours[i]] = this.generateHourlyInfoObject(i);
     }
   };
 
   this.generateHourlyInfoObject = function(i) {
-      var numCustomers = this.numCustomersPerHour[i];
-      var numCookies = Math.ceil(numCustomers * this.avgCookiesPerSale);
-      var numStaff = this.calculateNumStaffNeeded(numCustomers);
-      this.totalDailyCookies += numCookies;
-      var hourInfoObject = {
-        hourlyCustomers: numCustomers,
-        hourlyCookies: numCookies,
-        staffNeeded: numStaff
-      };
-      return hourInfoObject;
+    var numCustomers = this.numCustomersPerHour[i];
+    var numCookies = Math.ceil(numCustomers * this.avgCookiesPerSale);
+    var numStaff = this.calculateNumStaffNeeded(numCustomers);
+    this.totalDailyCookies += numCookies;
+    var hourInfoObject = {
+      hourlyCustomers: numCustomers,
+      hourlyCookies: numCookies,
+      staffNeeded: numStaff
+    };
+    return hourInfoObject;
   };
 
   this.calculateNumStaffNeeded = function(numCustomers) {
@@ -57,7 +57,7 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       numStaff = 2;
     }
     return numStaff;
-  }
+  };
 
   this.render = function(tableEl, renderingCookie) {
     // console.log(this.hourInfoList);
@@ -80,14 +80,14 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       trEl.appendChild(tdEl);
     }
 
-    if (renderingCookie){
-      var tdEl = document.createElement('td');
+    if (renderingCookie) {
+      tdEl = document.createElement('td');
       tdEl.textContent = this.totalDailyCookies;
       trEl.appendChild(tdEl);
     }
     tableEl.appendChild(trEl);
   };
-    this.generateInfoList();
+  this.generateInfoList();
 }
 
 var stores = [
@@ -113,7 +113,7 @@ function renderTable() {
 
 function renderHeader(tableEl, renderingCookie) {
   var trEl = document.createElement('tr');
-  //append the blank corner first
+  //name the tables in the top left corner
   var titleEl = document.createElement('th');
   if (renderingCookie)
     titleEl.textContent = 'Cookies Sold';
@@ -127,7 +127,7 @@ function renderHeader(tableEl, renderingCookie) {
     trEl.appendChild(thEl);
   }
   if (renderingCookie) {
-    var thEl = document.createElement('th');
+    thEl = document.createElement('th');
     thEl.textContent = 'Daily Location Total';
     trEl.appendChild(thEl);
   }

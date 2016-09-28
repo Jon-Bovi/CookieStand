@@ -42,7 +42,7 @@ table {
   left:8px;
 }
 
-#what {
+#container {
   width:400px;
   margin: 0px auto;
 }
@@ -83,12 +83,17 @@ td.over:active {
 h2 {
   font-size: 30px;
   margin:0px;
+  margin-top:29px;
 }
 
-h2:active {
+.button:active {
   display:none;
 }
 
 #fools {
   background-image: url("gandalf.gif");
+}
+
+.button {
+  height: 100%;
 }

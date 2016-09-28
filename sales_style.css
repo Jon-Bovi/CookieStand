@@ -17,9 +17,9 @@ td:first-child {
 }
 
 th:first-of-type {
-  font-weight: normal;
+  font-weight: bold;
   font-variant: small-caps;
-  background-color:
+  background-color: gray;
 }
 
 tr:last-child, td:last-child {
