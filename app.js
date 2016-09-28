@@ -1,6 +1,7 @@
 'use strict';
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+var newStore = document.getElementById('storeform');
 
 function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale) {
   this.locationName = locationName;
@@ -181,6 +182,26 @@ function renderStaffingTable() {
     stores[i].render(staffTable, false, odd);
   }
 }
+
+function handleSubmitStore(event) {
+  event.preventDefault();
+
+  var locationName = event.target.location.value;
+  var minCustomersPerHr = parseInt(event.target.minCusts.value);
+  var maxCustomersPerHr = parseInt(event.target.maxCusts.value);
+  var avgCookiesPerSale = parseInt(event.target.avg.value);
+
+  if (!locationName || !minCustomersPerHr || !maxCustomersPerHr || !avgCookiesPerSale) {
+    return alert('All fields required.');
+  } else if (typeof(minCustomersPerHr) !== 'number' || typeof(maxCustomersPerHr) !== 'number' || typeof(avgCookiesPerSale !== 'number')) {
+    return alert('Invalid values.');
+  }
+
+
+  stores.push(new CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale);)
+}
+
+newStore.addEventListener('submit', handleSubmit);
 
 renderTable();
 renderStaffingTable();

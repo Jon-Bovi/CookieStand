@@ -7,6 +7,26 @@
 </head>
 
 <body>
+  <form id="storeform">
+    <fieldset>
+      <legend>Add a Store</legend>
+
+      <label for="location">Location: </label>
+      <input name="location" type="text" />
+
+      <label for="minCusts">Min. Customers Per Hour: </label>
+      <input name="minCusts" type="text" />
+
+      <label for="maxCusts">Max. Customers Per Hour: </label>
+      <input name="maxCusts" type="text" />
+
+      <label for="avg">Average Cookies Per Sale: </label>
+      <input name="avg" type="text" />
+
+      <button type="submit">Add to tables</button>
+    </fieldset>
+  </form>
+
   <table id="cookiestores"></table>
   <table id="staffingtable"></table>
   <script src="app.js"></script>
