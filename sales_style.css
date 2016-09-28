@@ -19,10 +19,23 @@ td:first-child {
 th:first-of-type {
   font-weight: normal;
   font-variant: small-caps;
+  background-color:
 }
 
 tr:last-child, td:last-child {
   background-color: peachpuff;
+}
+
+td:last-child {
+  min-width: 90px;
+}
+
+tr:last-child td:last-child {
+  background-image: url("crag-salmon.png");
+  background_position: right;
+  background-repeat: no-repeat;;
+  background-size: contain;
+  background-color: tomato;
 }
 
 th {
