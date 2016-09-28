@@ -1,8 +1,6 @@
 'use strict';
-/*eslint-disable*/
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var hourlyTotals = [];
 
 function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale) {
   this.locationName = locationName;
@@ -10,16 +8,38 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
   this.maxCustomersPerHr = maxCustomersPerHr;
   this.avgCookiesPerSale = avgCookiesPerSale;
   this.totalDailyCookies = 0;
+  this.numCustomersPerHour = [];
   this.hourInfoList = {};
 
-  this.generateInfoList = function() {
-      for (var i = 0; i < hours.length; i++) {
-          this.hourInfoList[hours[i]] = this.generateHourlyInfoObject();
-      }
+  this.generateCustomersPerHour = function() {
+    for (var i = 0; i < hours.length; i++) {
+      this.numCustomersPerHour.push(Math.floor(Math.random() * (this.maxCustomersPerHr - this.minCustomersPerHr + 1)) + this.minCustomersPerHr);
+    }
+    this.distributeCustomersPerHour();
+    console.log(this.numCustomersPerHour);
   };
 
-  this.generateHourlyInfoObject = function() {
-      var numCustomers = Math.floor(Math.random() * (this.maxCustomersPerHr - this.minCustomersPerHr + 1)) + this.minCustomersPerHr;
+  // makes numCustomersPerHour into a pseudo bell-curve
+  // whether this actually simulates reality better...I don't know
+  this.distributeCustomersPerHour = function() {
+    var firstHalf = this.numCustomersPerHour.slice(0, hours.length / 2);
+    var secondHalf = this.numCustomersPerHour.slice(hours.length / 2, hours.length);
+    //sorts the first 7 hours in ascending order
+    firstHalf.sort(function(a, b) {return a - b}); // eslint-disable
+    //sorts the last 7 hours in descending order
+    secondHalf.sort(function(a, b) {return b - a});  //eslint-disable
+    this.numCustomersPerHour = firstHalf.concat(secondHalf);
+  };
+
+  this.generateInfoList = function() {
+    this.generateCustomersPerHour();
+    for (var i = 0; i < hours.length; i++) {
+        this.hourInfoList[hours[i]] = this.generateHourlyInfoObject(i);
+    }
+  };
+
+  this.generateHourlyInfoObject = function(i) {
+      var numCustomers = this.numCustomersPerHour[i];
       var numCookies = Math.ceil(numCustomers * this.avgCookiesPerSale);
       var numStaff = this.calculateNumStaffNeeded(numCustomers);
       this.totalDailyCookies += numCookies;
@@ -157,6 +177,7 @@ function renderStaffingTable() {
     stores[i].render(staffTable, false);
   }
 }
+
 
 renderTable();
 
