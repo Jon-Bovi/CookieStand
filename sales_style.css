@@ -1,3 +1,37 @@
-tr+td {
-  min-width: 100px;
+* {
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+
+td {
+  outline: 2px solid gray;
+  text-align: center;
+  height: 30px;
+  width:auto;
+  min-width: 40px;
+  border-collapse: collapse;
+}
+
+td:first-child {
+  background-color: gainsboro;
+}
+
+th:first-of-type {
+  font-weight: normal;
+  font-variant: small-caps;
+}
+
+tr:last-child, td:last-child {
+  background-color: peachpuff;
+}
+
+th {
+  outline: 2px solid gray;
+  height: 25px;
+  border-collapse: collapse;
+  background-color: gainsboro;
+}
+table {
+  border: 2px solid black;
+  margin-bottom: 30px;
 }

@@ -39,8 +39,7 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
     return numStaff;
   }
 
-  this.render = function(tableEl) {
-    this.generateInfoList();
+  this.render = function(tableEl, renderingCookie) {
     // console.log(this.hourInfoList);
     var trEl = document.createElement('tr');
 
@@ -52,16 +51,23 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
     for (var j = 0; j < hours.length; j++) {
       hour = hours[j];
       var tdEl = document.createElement('td');
-      tdEl.textContent = this.hourInfoList[hour].hourlyCookies;
+      if (renderingCookie){
+        tdEl.textContent = this.hourInfoList[hour].hourlyCookies;
+      }
+      else {
+        tdEl.textContent = this.hourInfoList[hour].staffNeeded;
+      }
       trEl.appendChild(tdEl);
     }
-    var tdEl = document.createElement('td');
-    tdEl.textContent = this.totalDailyCookies;
-    trEl.appendChild(tdEl);
 
+    if (renderingCookie){
+      var tdEl = document.createElement('td');
+      tdEl.textContent = this.totalDailyCookies;
+      trEl.appendChild(tdEl);
+    }
     tableEl.appendChild(trEl);
   };
-
+    this.generateInfoList();
 }
 
 var stores = [
@@ -75,32 +81,36 @@ var stores = [
 function renderTable() {
   var tableEl = document.getElementById('cookiestores');
 
-  renderHeader(tableEl);
+  renderHeader(tableEl, true);
   //tell instances to render their own info
   for (var i = 0; i < stores.length; i++) {
-    stores[i].render(tableEl);
+    stores[i].render(tableEl, true);
   }
   //render totals row
-  renderFooter(tableEl);
+  renderFooter(tableEl, true);
 
 }
 
-function renderHeader(tableEl) {
+function renderHeader(tableEl, renderingCookie) {
   var trEl = document.createElement('tr');
   //append the blank corner first
-  var blankEl = document.createElement('th');
-  blankEl.textContent = '';
-  trEl.appendChild(blankEl);
+  var titleEl = document.createElement('th');
+  if (renderingCookie)
+    titleEl.textContent = 'Cookies Sold';
+  else
+    titleEl.textContent = 'Staff Needed';
+  trEl.appendChild(titleEl);
   //append the hours as th's
   for (var i = 0; i < hours.length; i++) {
     var thEl = document.createElement('th');
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
   }
-  var thEl = document.createElement('th');
-  thEl.textContent = 'Daily Location Total';
-  trEl.appendChild(thEl);
-
+  if (renderingCookie) {
+    var thEl = document.createElement('th');
+    thEl.textContent = 'Daily Location Total';
+    trEl.appendChild(thEl);
+  }
   tableEl.appendChild(trEl);
 }
 
@@ -138,4 +148,16 @@ function calculateUltimateTotal() {
   return total;
 }
 
+function renderStaffingTable() {
+  var staffTable = document.getElementById('staffingtable');
+
+  renderHeader(staffTable, false);
+
+  for (var i = 0; i < stores.length; i++) {
+    stores[i].render(staffTable, false);
+  }
+}
+
 renderTable();
+
+renderStaffingTable();
