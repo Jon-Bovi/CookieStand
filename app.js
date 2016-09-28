@@ -160,7 +160,7 @@ function renderFooter(tableEl) {
   tableEl.appendChild(trEl);
 }
 
-function renderTable() {
+function renderCookieTable() {
   var tableEl = document.getElementById('cookiestores');
   renderHeader(tableEl, true);
   //tell instances to render their own info
@@ -197,11 +197,18 @@ function handleSubmitStore(event) {
     return alert('Invalid values.');
   }
 
+  stores.push(new CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale));
 
-  stores.push(new CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale);)
+  event.target.location.value = null;
+  event.target.minCusts.value = null;
+  event.target.maxCusts.value = null;
+  event.target.avg.value = null;
+
+  renderCookieTable();
+  renderStaffingTable();
 }
 
 newStore.addEventListener('submit', handleSubmit);
 
-renderTable();
+renderCookieTable();
 renderStaffingTable();
