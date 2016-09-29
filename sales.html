@@ -7,7 +7,27 @@
 </head>
 
 <body>
-  <table id="cookiestores"></table>
+  <form id="storeform">
+    <fieldset>
+      <legend>Add/Edit Store</legend>
+
+      <label for="location" class="left">Location: </label>
+      <input name="location" type="text" id="left" required>
+
+      <label for="minCusts">Min. Customers Per Hour: </label>
+      <input name="minCusts" type="number" class="number" min="0">
+
+      <label for="maxCusts" id="max">Max. Customers Per Hour: </label>
+      <input name="maxCusts" type="number" class="number" min="0">
+
+      <label for="avg">Average Cookies Per Sale: </label>
+      <input name="avg" type="number" class="number" min="0" step=".1">
+
+      <button type="submit">Update Tables</button>
+    </fieldset>
+  </form>
+
+  <table id="cookietable"></table>
   <table id="staffingtable"></table>
   <script src="app.js"></script>
 </body>
