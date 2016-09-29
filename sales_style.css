@@ -3,21 +3,26 @@
   font-weight: lighter;
 }
 
-.number {
-  width: 60px;
-}
-
 table {
   border: 2px solid black;
-  margin-bottom: 30px;
-}
-
-.odd {
+  margin: 20px 10px;
   background-color: #EFEFFF;
 }
 
+#cookietable {
+  border-top-right-radius: 92px 27px;
+  border-bottom-right-radius: 92px 32px;
+  background-image: url("crag-salmon.png");
+  background-repeat: space;
+  background-position: right;
+}
+
+tr {
+    background-color: white;
+}
+
 td {
-  outline: 2px solid gray;
+  outline: 2px solid darkgray;
   text-align: center;
   height: 30px;
   width:auto;
@@ -25,18 +30,36 @@ td {
   border-collapse: collapse;
 }
 
+.odd {
+  background-color: #EFEFFF;
+}
+
 td:first-child {
-  background-color: gainsboro;
+  background-color: #e3eaea;
+  width: 120px;
+}
+
+#cookietable td:first-child:active {
+  font-size: 70%;
+  padding: 1px 1px;
 }
 
 th:first-of-type {
-  font-weight: bold;
+  font-weight: normal;
   font-variant: small-caps;
-  background-color: gray;
+  background-color: #cacaca;
 }
 
-#cookietable tr:last-child, #cookietable td:last-child {
-  background-color: #ffeadd;
+th:last-of-type {
+  padding: 0px 3px;
+}
+
+#cookietable tr:last-child, #cookietable td:nth-child(16) {
+  background-color: #edffec;
+}
+
+#cookietable td:last-child {
+  background-color: #d5d5d5;
 }
 
 #cookietable td:last-child {
@@ -44,16 +67,52 @@ th:first-of-type {
 }
 
 #cookietable tr:last-child td:last-child {
-  background-image: url("crag-salmon.png");
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #ffaa95;
+  background-color: #bbffaa;
 }
 
 th {
-  outline: 2px solid gray;
+  outline: 2px solid darkgray;
   height: 25px;
   border-collapse: collapse;
-  background-color: gainsboro;
+  background-color: #e3eaea;
+}
+
+fieldset {
+  width: 260px;
+  height: 144px;
+  background-color: #eaefef;
+  margin-left: 10px;
+}
+
+legend {
+  padding: 3px 20px;
+  border-radius: 6%;
+  border: 1px solid black;
+  margin-left: 100px;
+  font-weight: normal;
+  font-variant: small-caps;
+  background-color: #cdcdcd;
+}
+
+label {
+  float:left;
+  margin-bottom: 8px;
+  border-bottom: 1px solid darkgray;
+}
+input {
+  float: right;
+  margin-bottom: 8px;
+  width: 180px;
+}
+
+.number {
+  width: 60px;
+  height: auto;
+}
+
+fieldset button {
+  display: block;
+  float:right;
+  clear: both;
+  margin-bottom: 7px;
 }
