@@ -1,7 +1,7 @@
 'use strict';
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var newStoreEl = document.getElementById('storeform');
+var updateEl = document.getElementById('storeform');
 var cookieTableEl = document.getElementById('cookietable');
 var staffingTable = document.getElementById('staffingtable');
 
@@ -36,6 +36,7 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
   };
 
   this.generateInfoList = function() {
+    this.totalDailyCookies = 0;
     this.generateCustomersPerHour();
     for (var i = 0; i < hours.length; i++) {
       this.hourInfoList[hours[i]] = this.generateHourlyInfoObject(i);
@@ -198,7 +199,6 @@ function renderCookieTable() {
 }
 
 function renderStaffingTable() {
-  var staffTable = document.getElementById('staffingtable');
   renderHeader(false);
   var odd = true;
   for (var i = 0; i < stores.length; i++) {
@@ -209,34 +209,29 @@ function renderStaffingTable() {
 
 function handleSubmitStore(event) {
   event.preventDefault();
-  if (event.target === newStoreEl) {
+  if (event.target === updateEl) {
     var locationName = event.target.location.value;
     var minCustomersPerHr = parseInt(event.target.minCusts.value);
     var maxCustomersPerHr = parseInt(event.target.maxCusts.value);
     var avgCookiesPerSale = event.target.avg.value;
-
-    if (minCustomersPerHr > maxCustomersPerHr) {
+    var storeToEdit = isStore(locationName);
+    if (minCustomersPerHr > maxCustomersPerHr || maxCustomersPerHr < storeToEdit.minCustomersPerHr) {
       return alert('Min value must be less than max value.');
-    } else if (isStore(locationName)) {
-      var changed = false;
-      var storeToEdit = isStore(locationName);
+    } else if (storeToEdit) {
       if (minCustomersPerHr) {
         storeToEdit.minCustomersPerHr = minCustomersPerHr;
-        changed = true;
       }
       if (maxCustomersPerHr) {
         storeToEdit.maxCustomersPerHr = maxCustomersPerHr;
-        changed = true;
       }
       if (avgCookiesPerSale) {
         storeToEdit.avgCookiesPerSale = avgCookiesPerSale;
-        changed = true;
       }
-      isStore(locationName).generateInfoList();
+      storeToEdit.generateInfoList();
     } else if (!minCustomersPerHr || !maxCustomersPerHr || !avgCookiesPerSale) {
       return alert('All fields required for new locations.');
     } else {
-        stores.push(new CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale));
+      stores.push(new CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale));
     }
     event.target.location.value = null;
     event.target.minCusts.value = null;
@@ -254,7 +249,7 @@ function handleSubmitStore(event) {
   renderStaffingTable();
 }
 
-newStoreEl.addEventListener('submit', handleSubmitStore);
+updateEl.addEventListener('submit', handleSubmitStore);
 cookieTableEl.addEventListener('click', handleSubmitStore);
 
 renderCookieTable();
