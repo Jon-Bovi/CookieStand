@@ -10,8 +10,8 @@ table {
 }
 
 #cookietable {
-  border-top-right-radius: 92px 27px;
-  border-bottom-right-radius: 92px 32px;
+  /*border-top-right-radius: 92px 27px;
+  border-bottom-right-radius: 92px 32px;*/
   background-image: url("crag-salmon.png");
   background-repeat: space;
   background-position: right;
@@ -58,15 +58,15 @@ th:last-of-type {
   background-color: #edffec;
 }
 
-#cookietable td:last-child {
+#horizontal #cookietable td:last-child {
   background-color: #d5d5d5;
 }
 
 #cookietable td:last-child {
-  min-width: 90px;
+  padding: 4px;
 }
 
-#cookietable tr:last-child td:last-child {
+#cookietable tr:last-child td:nth-child(16) {
   background-color: #bbffaa;
 }
 
@@ -74,6 +74,22 @@ th {
   outline: 2px solid darkgray;
   height: 25px;
   border-collapse: collapse;
+  background-color: #e3eaea;
+}
+
+#vertical tr:first-of-type {
+  background-color: #efffec;
+}
+
+#vertical tr:nth-child(16) {
+  background-color: #d5d5d5;
+}
+
+#vertical tr:nth-child(16) td:last-child {
+  background-color: #bbffaa;
+}
+
+#vertical th, td:last-child {
   background-color: #e3eaea;
 }
 

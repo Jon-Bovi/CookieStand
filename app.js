@@ -4,6 +4,9 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 var updateEl = document.getElementById('storeform');
 var cookieTableEl = document.getElementById('cookietable');
 var staffingTable = document.getElementById('staffingtable');
+var containingDiv = document.getElementById('horizontal');
+var oldSize = 1000;
+var columns;
 
 function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerSale) {
   this.locationName = locationName;
@@ -85,7 +88,7 @@ function CookieShop(locationName, minCustomersPerHr, maxCustomersPerHr, avgCooki
       }
       trEl.appendChild(tdEl);
     }
-    //if rendering the cookie table, insert store total for the day
+    //if rendering the cookie table, insert store total for the day and the button
     if (renderingCookie) {
       tdEl = document.createElement('td');
       tdEl.textContent = this.totalDailyCookies;
@@ -135,7 +138,7 @@ function calculateUltimateTotal() {
 
 function isStore(storeName) {
   for (var i = 0; i < stores.length; i++) {
-    if (stores[i].locationName === storeName) {
+    if (stores[i].locationName.toLowerCase() === storeName.toLowerCase()) {
       return stores[i];
     }
   }
@@ -161,6 +164,7 @@ function renderHeader(renderingCookie) {
     thEl = document.createElement('th');
     thEl.textContent = 'Daily Location Total';
     trEl.appendChild(thEl);
+    trEl.appendChild(document.createElement('th'));
     cookieTableEl.appendChild(trEl);
   } else {
     staffingTable.appendChild(trEl);
@@ -182,6 +186,7 @@ function renderFooter() {
   tdEl = document.createElement('td');
   tdEl.textContent = calculateUltimateTotal();
   trEl.appendChild(tdEl);
+  trEl.appendChild(document.createElement('td'));
   cookieTableEl.appendChild(trEl);
 }
 
@@ -215,9 +220,15 @@ function handleSubmitStore(event) {
   var avgCookiesPerSale = event.target.avg.value;
   var storeToEdit = isStore(locationName);
 
-  if (minCustomersPerHr > maxCustomersPerHr || maxCustomersPerHr < storeToEdit.minCustomersPerHr || minCustomersPerHr > storeToEdit.maxCustomersPerHr) {
+  if (minCustomersPerHr > maxCustomersPerHr) {
     return alert('Invalid min/max values.');
   } else if (storeToEdit) {
+    if (minCustomersPerHr > storeToEdit.maxCustomersPerHr) {
+      return alert('Min value must be less than set max value of ' + storeToEdit.maxCustomersPerHr);
+    }
+    if (maxCustomersPerHr < storeToEdit.minCustomersPerHr) {
+      return alert('Max value must be more than set min value of ' + storeToEdit.minCustomersPerHr);
+    }
     if (minCustomersPerHr) {
       storeToEdit.minCustomersPerHr = minCustomersPerHr;
     }
@@ -240,6 +251,7 @@ function handleSubmitStore(event) {
   event.target.avg.value = null;
 
   resetTables();
+  handleResize();
 }
 
 function handleTableClick(event) {
@@ -271,30 +283,65 @@ function resetTables() {
 
   renderCookieTable();
   renderStaffingTable();
+  if (containingDiv.getAttribute('id') === 'vertical') {
+    makeVertical();
+  }
+}
+
+function handleResize() {
+  var newSize = window.innerWidth;
+  if (newSize < 750 && oldSize >= 750) {
+    makeVertical();
+  } else if (newSize >= 750 && oldSize < 750) {
+    containingDiv.setAttribute('id', 'horizontal');
+    resetTables();
+  }
+  oldSize = newSize;
 }
 
 function makeVertical() {
-  var rows = [];
-  // var currentEl = cookieTableEl;
-  console.log(cookieTableEl);
-  var children = cookieTableEl.childNodes;
-  console.log(children[0]);
-  // for (var i = 0; i < 17; i++) {
-  //   rows.push([]);
-  // }
-  // for (var i = 0; i < stores.length + 2; i++) {
-  //
-  //
-  //
-  // }
+  containingDiv.setAttribute('id', 'vertical');
+  columns = [];
+  var rowEls = cookieTableEl.children;
+  for (var j = 0; j < 17; j++) {
+    columns.push([]);
+  }
+  // console.log(rowEls);
+  var numRows = rowEls.length;
+  for (var i = 0; i < numRows; i++) {
+    var currentRow = rowEls[i];
+    console.log(currentRow);
+    console.log(rowEls.firstChild);
+    var rowLength = currentRow.children.length;
+    for (var k = 0; k < rowLength; k++) {
+      var currentBox = currentRow.firstChild;
+      // console.log(currentBox);
+      columns[k].push(currentRow.removeChild(currentBox));
+    }
+  }
+  while (cookieTableEl.firstChild) {
+    cookieTableEl.removeChild(cookieTableEl.firstChild);
+  }
+  for (var i = 0; i < columns.length; i++) {
+    var trEl = document.createElement('tr');
+    if (i % 2 === 0) {
+      trEl.setAttribute('class', 'odd');
+    }
+    for (var k = 0; k < columns[i].length; k++) {
+      trEl.appendChild(columns[i][k]);
+    }
+    cookieTableEl.appendChild(trEl);
+  }
+
 }
 
-// a
-makeVertical();
+
 
 updateEl.addEventListener('submit', handleSubmitStore);
 cookieTableEl.addEventListener('click', handleTableClick);
 cookieTableEl.addEventListener('mousedown', handleTableClick);
+window.addEventListener('resize', handleResize);
+window.addEventListener('load', handleResize);
 
 renderCookieTable();
 renderStaffingTable();
