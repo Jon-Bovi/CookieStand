@@ -57,34 +57,37 @@ table {
   top: 70px;
 }
 
-#yes {
-  margin: auto;
-  text-align: center;
-  height: 200px;
-  width:300px;
-  border-radius: 90%;
-  background-color: lavender;
+/*#top {
+  position: absolute;
+  width:auto;
+  margin: 0px;
+  left:0px;
 }
 
-#yes h2 {
-  padding-top: 20%;
-  text-shadow: 1px 2px white;
-  font-size: 60px;
+#bottom {
+  position: absolute;
+  width:auto;
+  margin: 0px;
+  left:0px;
+}*/
+
+/*#containerover {
+  width:400px;
+  margin: 0px auto;
+  padding:0px;
+  position: relative;
+  bottom: 100px;
+  left: 8px;
 }
 
-#no {
-  height: 50px;
-  text-align: center;
-  width: 50px;
-  margin: auto;
-  border-radius: 90%;
-  background-color: paleturquoise;
-}
-
-#no h2 {
-  padding-top: 9px;
-  font-size: 22px;
-}
+#containerunder {
+ width:400px;
+ margin: 0px auto;
+ padding:0px;
+ position: absolute;
+ bottom: 100px;
+ left: 8px;
+ }*/
 
 td {
   text-align: center;
@@ -112,6 +115,10 @@ p {
   position: relative;
   bottom: 39px;
 
+}
+
+.big {
+  height:300px;
 }
 
 td.over:active {
