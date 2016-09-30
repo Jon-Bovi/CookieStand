@@ -11,24 +11,26 @@
     <fieldset>
       <legend>Add/Edit Store</legend>
 
-      <label for="location" class="left">Location: </label>
-      <input name="location" type="text" id="left" required>
+      <label for="location" id="locInput">Location: </label>
+      <input name="location" type="text" id="locationFormEl" required>
 
       <label for="minCusts">Min. Customers Per Hour: </label>
       <input name="minCusts" type="number" class="number" min="0">
 
-      <label for="maxCusts" id="max">Max. Customers Per Hour: </label>
+      <label for="maxCusts">Max. Customers Per Hour: </label>
       <input name="maxCusts" type="number" class="number" min="0">
 
       <label for="avg">Average Cookies Per Sale: </label>
-      <input name="avg" type="number" class="number" min="0" step=".1">
+      <input name="avg" type="number" class="number" min="1" step=".1">
 
       <button type="submit">Update Tables</button>
     </fieldset>
   </form>
 
-  <table id="cookietable"></table>
-  <table id="staffingtable"></table>
+  <div id="horizontal">
+    <table id="cookietable"></table>
+    <table id="staffingtable"></table>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
