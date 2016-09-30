@@ -273,6 +273,25 @@ function resetTables() {
   renderStaffingTable();
 }
 
+function makeVertical() {
+  var rows = [];
+  // var currentEl = cookieTableEl;
+  console.log(cookieTableEl);
+  var children = cookieTableEl.childNodes;
+  console.log(children[0]);
+  // for (var i = 0; i < 17; i++) {
+  //   rows.push([]);
+  // }
+  // for (var i = 0; i < stores.length + 2; i++) {
+  //
+  //
+  //
+  // }
+}
+
+// a
+makeVertical();
+
 updateEl.addEventListener('submit', handleSubmitStore);
 cookieTableEl.addEventListener('click', handleTableClick);
 cookieTableEl.addEventListener('mousedown', handleTableClick);

@@ -77,17 +77,13 @@ p {
 }
 
 td.over:active {
-  background-color: transparent;
+  visibility: hidden;
 }
 
 h2 {
   font-size: 30px;
   margin:0px;
   margin-top:29px;
-}
-
-.button:active {
-  display:none;
 }
 
 #fools {

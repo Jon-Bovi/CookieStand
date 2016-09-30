@@ -78,7 +78,7 @@ th {
 }
 
 fieldset {
-  width: 260px;
+  width: 265px;
   height: 144px;
   background-color: #eaefef;
   margin-left: 10px;
@@ -99,6 +99,12 @@ label {
   margin-bottom: 8px;
   border-bottom: 1px solid darkgray;
 }
+
+.left {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
 input {
   float: right;
   margin-bottom: 8px;
