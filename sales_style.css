@@ -3,10 +3,17 @@
   font-weight: lighter;
 }
 
+body {
+  padding: 0px;
+  border: 0px;
+  background-color: #eeefea;
+}
+
 table {
   border: 2px solid black;
   margin: 20px 10px;
   background-color: #EFEFFF;
+  margin-bottom: 0px;
 }
 
 #cookietable {
@@ -89,7 +96,7 @@ th {
   background-color: #bbffaa;
 }
 
-#vertical th, td:last-child {
+#vertical th, #vertical #cookietable td:last-child {
   background-color: #e3eaea;
 }
 
@@ -116,7 +123,7 @@ label {
   border-bottom: 1px solid darkgray;
 }
 
-.left {
+#locInput {
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
