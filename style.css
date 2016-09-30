@@ -5,7 +5,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-image: url("CookieMonsterWaving.jpg");
+  background-image: url("img/CookieMonsterWaving.jpg");
   background-position: top;
   background-repeat: no-repeat;
 }
@@ -87,7 +87,7 @@ h2 {
 }
 
 #fools {
-  background-image: url("gandalf.gif");
+  background-image: url("img/gandalf.gif");
 }
 
 .button {
