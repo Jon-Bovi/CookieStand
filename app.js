@@ -301,31 +301,36 @@ function handleResize() {
 
 function makeVertical(table) {
   containingDiv.setAttribute('id', 'vertical');
-  var columns = [];
+  var flippedTable = [];
   var rowEls = table.children;
-  var numRows = rowEls.length;
-  for (var j = 0; j < 17; j++) {
-    columns.push([]);
+  var numOldRows = rowEls.length;
+  var numOldColumns = rowEls[0].children.length;
+  // initialize flippedTable multidimensional array
+  for (var j = 0; j < numOldColumns; j++) {
+    flippedTable.push([]);
   }
-  for (var i = 0; i < numRows; i++) {
+  // build flippedTable and destroy old DOM table
+  for (var i = 0; i < numOldRows; i++) {
     var currentRow = rowEls[i];
-    var rowLength = currentRow.children.length;
-    for (var k = 0; k < rowLength; k++) {
+    var currentRowLength = currentRow.children.length;
+    for (var k = 0; k < currentRowLength; k++) {
       var currentBox = currentRow.firstChild;
       // console.log(currentBox);
-      columns[k].push(currentRow.removeChild(currentBox));
+      flippedTable[k].push(currentRow.removeChild(currentBox));
     }
   }
+  // remove remaining tr elements from table
   while (table.firstChild) {
     table.removeChild(table.firstChild);
   }
-  for (var i = 0; i < columns.length; i++) {
+  // build new DOM table from flippedTable
+  for (var i = 0; i < flippedTable.length; i++) {
     var trEl = document.createElement('tr');
     if (i % 2 === 0) {
       trEl.setAttribute('class', 'odd');
     }
-    for (var k = 0; k < columns[i].length; k++) {
-      trEl.appendChild(columns[i][k]);
+    for (var k = 0; k < flippedTable[i].length; k++) {
+      trEl.appendChild(flippedTable[i][k]);
     }
     table.appendChild(trEl);
   }
