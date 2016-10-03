@@ -164,6 +164,11 @@ h2 {
   float: right;
 }
 
+em {
+  font-size: 54px;
+  text-shadow: 2px 2px pink;
+}
+
 #contentsection {
   margin-top: 350px;
   font-family: Indie Flower;
