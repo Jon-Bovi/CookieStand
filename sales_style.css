@@ -6,7 +6,7 @@
 body {
   padding: 0px;
   border: 0px;
-  background-color: #eeefea;
+  background-color: snow;
 }
 
 table {
@@ -62,7 +62,7 @@ th:last-of-type {
 }
 
 #cookietable tr:last-child, #cookietable td:nth-child(16) {
-  background-color: #edffec;
+  background-color: #ffeecc;
 }
 
 #horizontal #cookietable td:last-child {
@@ -74,7 +74,7 @@ th:last-of-type {
 }
 
 #cookietable tr:last-child td:nth-child(16) {
-  background-color: #bbffaa;
+  background-color: lightsalmon;
 }
 
 th {
