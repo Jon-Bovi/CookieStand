@@ -164,6 +164,11 @@ h2 {
   float: right;
 }
 
+em {
+  font-size: 54px;
+  text-shadow: 2px 2px pink;
+}
+
 #contentsection {
   margin-top: 350px;
   font-family: Indie Flower;
@@ -194,7 +199,9 @@ header {
 #seasonal {
   margin-top: 40px;
   letter-spacing: 5px;
-  background-color: #eebb44;
+  background-color: #ffefdd;
+  border-top: 3px solid #eebb44;
+  border-bottom: 3px solid #eebb44;
   padding: 10px 0px;
 }
 
@@ -214,8 +221,9 @@ ul {
   width: 100%;
   margin: 20px auto;
   height: auto;
-  border-top: 3px solid peachpuff;
-  border-bottom: 3px solid peachpuff;
+  border-top: 3px solid #eebb44;
+  border-bottom: 3px solid #eebb44;
+  background-color: #ffefdd;
   padding-top: 40px;
   padding-bottom: 40px;
   overflow: auto;
