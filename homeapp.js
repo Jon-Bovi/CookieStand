@@ -5,8 +5,7 @@ var salmon = document.getElementById('salmon');
 var loveBubble = document.getElementById('love');
 var toFill = document.getElementById('footerfill');
 var ulEl = document.getElementById('ul');
-var yesArray = ['Definitely', 'I do', 'Certainly', 'With all my heart', 'Of course', 'Who doesn\'t?', 'MMM YES'];
-var noArray = ['no', 'no', 'ew no', 'no'];
+var yesArray = ['Definitely', 'I do', 'Certainly', 'With all my heart', 'Of course', 'Who doesn\'t?', 'MMM YES', 'Yup', 'Ya...duh'];
 
 function makeYes() {
   noCircle.firstChild.textContent = 'YES';
