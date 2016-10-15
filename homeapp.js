@@ -1,7 +1,7 @@
 'use strict';
 var yesCircle = document.getElementById('yes');
 var noCircle = document.getElementById('no');
-var salmon = document.getElementById('salmon');
+// var salmon = document.getElementById('salmon');
 var loveBubble = document.getElementById('love');
 var toFill = document.getElementById('footerfill');
 var ulEl = document.getElementById('ul');
@@ -22,16 +22,12 @@ function salmonLove() {
   loveBubble.style.visibility = 'visible';
 }
 
-function salmonNoLove() {
-  loveBubble.style.visibility = 'hidden';
-}
-
 function showLocations() {
- toFill.innerHTML = '<ul id="loclist"><li><h3>1st and Pike</h3><p>1444 1st Ave.</p><p>Seattle, WA 98101</p><p>206-867-5309</p></li><li><h3>SeaTac Airport</h3><p>Terminal 2</p><p>17801 International Blvd.</p><p>Seattle, WA 98158</p><p>206-867-5308</p></li><li><h3>Seattle Center</h3><p>305 Harrison St.</p><p>Seattle, WA 98109</p><p>206-867-5307</p></li><h3>Capitol Hill</h3><p>877 11th Ave.</p><p>Seattle, WA 98102</p><p>206-867-5306</p></li><li><h3>Alki</h3><p>3200 60th Ave.</p><p>Seattle, WA 98116</p><p>206-867-5305</p></li></ul>';
+  toFill.innerHTML = '<ul id="loclist"><li><h3>1st and Pike</h3><p>1444 1st Ave.</p><p>Seattle, WA 98101</p><p>206-867-5309</p></li><li><h3>SeaTac Airport</h3><p>Terminal 2</p><p>17801 International Blvd.</p><p>Seattle, WA 98158</p><p>206-867-5308</p></li><li><h3>Seattle Center</h3><p>305 Harrison St.</p><p>Seattle, WA 98109</p><p>206-867-5307</p></li><h3>Capitol Hill</h3><p>877 11th Ave.</p><p>Seattle, WA 98102</p><p>206-867-5306</p></li><li><h3>Alki</h3><p>3200 60th Ave.</p><p>Seattle, WA 98116</p><p>206-867-5305</p></li></ul>';
 }
 
 function showHours() {
-  toFill.innerHTML = '<h3>All Locations:</h3><p>6:00am - 8:00pm</p><p>7 days per week</p>'
+  toFill.innerHTML = '<h3>All Locations:</h3><p>6:00am - 8:00pm</p><p>7 days per week</p>';
 }
 
 function showContactInfo() {
@@ -59,11 +55,11 @@ function handleNav(event) {
   } else if (which === 'swag') {
     showSwag();
   } else {
-    toFill.innerHTML = '<img src="img/fish.jpg">'
+    toFill.innerHTML = '<img src="img/fish.jpg">';
   }
 }
-yesCircle.addEventListener('mousedown', salmonLove);
-yesCircle.addEventListener('mouseup', salmonNoLove);
+yesCircle.addEventListener('click', salmonLove);
+noCircle.addEventListener('click', salmonLove);
 noCircle.addEventListener('mouseover', makeYes);
 noCircle.addEventListener('mouseout', makeNoAgain);
 ulEl.addEventListener('click', handleNav);

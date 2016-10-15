@@ -68,6 +68,7 @@ table {
   justify-content: center;
   display: flex;
   line-height: 240%;
+  cursor: pointer;
 }
 
 #yes h2 {
@@ -82,6 +83,7 @@ table {
   width: 50px;
   border-radius: 90%;
   background-color: paleturquoise;
+  cursor: pointer;
 }
 
 #no h2 {
@@ -114,7 +116,7 @@ td {
   z-index: 10;
   position: relative;
   bottom: 39px;
-
+  cursor: pointer;
 }
 
 td.over:active {
@@ -249,6 +251,10 @@ footer {
   height: 300px;
 }
 
+#ul {
+  cursor: pointer;
+}
+
 #ul li {
   display: inline;
   font-family: Quicksand;
@@ -256,8 +262,8 @@ footer {
   margin: 10px auto;
 }
 
-footer li:hover {
-  cursor: crosshair;
+#ul li:hover {
+  color: #772244;
 }
 
 #loclist {
